@@ -5,9 +5,12 @@ client.on('ready', () => {
 	console.log('I am ready!');
 });
 
-client.on('message', message => {
+client.on('message', async message => {
+	if(message.author.bot) return;
+	
 	if (message.content === '!ping') {
-		message.reply(client.ping);
+		const m = await message.channel.send("Ping?");
+		message.reply('${Math.round(client.ping)}');
 	}
 });
 
