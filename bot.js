@@ -6,11 +6,11 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-	if(message.author.bot) return;
+	//if(message.author.bot) return;
 	
 	if (message.content === '!ping') {
 		const m = await message.channel.send("Ping?");
-		message.reply('test' + ${Math.round(client.ping)});
+		message.reply(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
 	}
 });
 
