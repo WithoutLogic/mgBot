@@ -9,7 +9,7 @@ client.on('message', async message => {
 	if(message.author.bot) return;
 	
 	if (message.content === '!ping') {
-		//const m = await message.channel.send("Ping?");
+		const m = await message.channel.send("Ping?");
 		message.reply(${Math.round(client.ping)});
 	}
 });
