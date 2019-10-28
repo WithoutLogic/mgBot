@@ -6,7 +6,7 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-	//if(message.author.bot) return;
+	if(message.author.bot) return;
 	
 	if (message.content === '!ping') {
 		const m = await message.channel.send("testing...");
@@ -14,4 +14,4 @@ client.on('message', async message => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+client.login(process.env.BOT_TOKEN);
