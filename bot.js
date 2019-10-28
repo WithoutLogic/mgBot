@@ -9,10 +9,9 @@ client.on('message', async message => {
 	if(message.author.bot) return;
 	
 	if (message.content === '!ping') {
-		const m = await message.channel.send("Ping?");
-		message.reply('${Math.round(client.ping)}');
+		//const m = await message.channel.send("Ping?");
+		message.reply(${Math.round(client.ping)});
 	}
 });
 
-// THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
