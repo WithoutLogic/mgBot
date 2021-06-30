@@ -1,17 +1,30 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const clientCommands = require('./commands');
 
-client.on('ready', () => {
-	console.log('I am ready!');
+const client = new Discord.Client();
+client.commands = new Discord.Collections();
+
+Object.keys(clientCommands).map((key) => {
+  client.commands.set(clientCommands[key].name, clientCommands[key]);
 });
 
-client.on('message', async message => {
-	if(message.author.bot) return;
-	
-	if (message.content === '!ping') {
-		const m = await message.channel.send("testing...");
-		message.reply(`Pong! Timestamp latency is ${m.createdTimestamp - message.createdTimestamp}ms. Discord API Latency is ${Math.round(client.ping)}ms.`);
-	}
+client.on('ready', () => {
+  console.info(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', async (msg) => {
+  if (msg.author.bot) return;
+  const args = msg.content.split(/ +/);
+  const command = args.shift().toLowerCase();
+  console.info(`Called command: ${command}`);
+  if (!client.commands.has(command)) return;
+
+  try {
+    await client.command.get(command).execute(msg, Math.round(client.ping));
+  } catch (e) {
+    console.error(e);
+    msg.reply('There was an error trying to execute that command!');
+  }
 });
 
 client.login(process.env.BOT_TOKEN);

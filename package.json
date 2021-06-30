@@ -1,13 +1,15 @@
 {
-	"name": "Example",
-	"description": "Example",
-	"version": "0.0.0",
-	"main": "bot.js",
-	"scripts": {
-		"start": "node bot.js"
-	},
-	"dependencies": {
-		"discord.js": "11.1.0",
-		"request": "2.81.0"
-	}
+  "name": "mgbot",
+  "version": "1.0.0",
+  "description": "Trying to make a simple bot for my discord channel.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "12.5.3",
+    "request": "2.88.2"
+  },
+  "author": "",
+  "license": "ISC"
 }
